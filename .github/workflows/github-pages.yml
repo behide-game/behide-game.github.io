@@ -19,11 +19,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: yarn
-      - run: yarn build
+
+      - name: Build
+        run: |
+          yarn
+          yarn build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-
+        with:
+          path: ./build
   deploy:
     environment:
       name: github-pages
