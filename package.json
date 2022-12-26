@@ -7,6 +7,7 @@
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
+    "prepare": "dotnet tool restore && dotnet paket restore && dotnet restore",
     "start": "dotnet fable watch ./src -s --run vite",
     "build": "dotnet fable ./src -s --noCache --run vite build"
   },
