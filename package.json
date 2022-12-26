@@ -1,0 +1,20 @@
+{
+  "name": "behide-game.github.io",
+  "version": "1.0.0",
+  "description": "A website for Behide.",
+  "repository": "git@github.com:behide-game/behide-game.github.io",
+  "author": "Gaël Bouquain <gael.bouquain@gmail.com>",
+  "license": "GPL-3.0",
+  "private": false,
+  "scripts": {
+    "start": "dotnet fable watch ./src -s --run vite",
+    "build": "dotnet fable ./src -s --noCache --run vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.57.1",
+    "vite": "^4.0.3"
+  }
+}
