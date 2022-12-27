@@ -10,7 +10,7 @@ let Banner () =
         prop.children [
             Html.img [
                 prop.className "banner-image"
-                prop.src "./assets/banner.png"
+                prop.src (importDefault "./assets/banner.png")
                 prop.alt "The logo of Behide."
             ]
 
@@ -26,9 +26,15 @@ let Badges () =
     Html.div [
         prop.className "badges"
         prop.children (
-            [ {| Image = "./assets/github.png"; Alt = "The logo of GitHub."; Text = "open source" |}
-              {| Image = "./assets/mirror.png"; Alt = "The logo of the networking library Mirror."; Text = "mirror" |}
-              {| Image = "./assets/money.png"; Alt = "An icon that represent money."; Text = "free to play" |} ]
+            [ {| Image = importDefault "./assets/github.png"
+                 Alt = "The logo of GitHub."
+                 Text = "open source" |}
+              {| Image = importDefault "./assets/mirror.png"
+                 Alt = "The logo of the networking library Mirror."
+                 Text = "mirror" |}
+              {| Image = importDefault "./assets/money.png"
+                 Alt = "An icon that represent money."
+                 Text = "free to play" |} ]
             |> List.map Components.Badge.Badge
         )
     ]

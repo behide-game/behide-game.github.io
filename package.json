@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "dotnet tool restore && dotnet paket restore && dotnet restore",
     "start": "dotnet fable watch ./src -s --run vite",
-    "build": "dotnet fable ./src -s --noCache --run vite build"
+    "build": "dotnet fable ./src -s --noCache --run vite build --emptyOutDir"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^3.0.0",
