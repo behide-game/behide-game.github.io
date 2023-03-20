@@ -1,11 +1,4 @@
-obj/
-bin/
 node_modules/
-fable_modules/
-packages/
-.paket/
-.fake/
-build/
-*.fs.js
-*.fs.js.map
-*.log
+dist/
+.yarn/
+!.yarn/sdks/

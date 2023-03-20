@@ -1,21 +1,25 @@
 {
-  "name": "behide-game.github.io",
-  "version": "1.0.0",
+  "name": "behide-game-website",
+  "version": "0.0.0",
   "description": "A website for Behide.",
   "repository": "git@github.com:behide-game/behide-game.github.io",
   "author": "Gaël Bouquain <gael.bouquain@gmail.com>",
   "license": "GPL-3.0",
-  "private": false,
   "scripts": {
-    "prepare": "dotnet tool restore && dotnet paket restore && dotnet restore",
-    "start": "dotnet fable watch ./src -s --run vite",
-    "build": "dotnet fable ./src -s --noCache --run vite build --emptyOutDir"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.59.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^3.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.57.1",
-    "vite": "^4.0.3"
-  }
+    "@solidjs/router": "^0.8.0",
+    "@supabase/supabase-js": "^2.11.0",
+    "solid-js": "^1.6.10"
+  },
+  "packageManager": "yarn@3.5.0"
 }
