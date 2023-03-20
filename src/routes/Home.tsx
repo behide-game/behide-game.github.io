@@ -23,6 +23,8 @@ const Button_ = ({ icon, iconAlt, cssClass, text, onClick }: { icon: string, ico
 )
 
 export default () => {
+  const navigateToRepo = () => document.location.assign("https://github.com/behide-game/")
+
   return (
     <div class="home">
       <div class="left-part">
@@ -30,15 +32,18 @@ export default () => {
       </div>
       <div class="right-part">
         <div class="features">
-          <div class="feature"><span>What ?</span></div>
+          <div class="feature"><span>What is that ?</span></div>
           <span class="feature">Free to play</span>
-          <span class="complex-feature"><span class="title">Open source</span><span class="action"><img src={githubLogo} alt="The GitHub logo" /></span></span>
+          <span class="complex-feature">
+            <span class="title">Open source</span>
+            <span class="action" style={`--background-url: url(${githubLogo})`} onClick={navigateToRepo} />
+          </span>
           <span class="feature">Every man for himself</span>
         </div>
 
         <div class="arrow" style={`--arrow-down-path: url("${arrowDown}")`} />
 
-        <Button.Primary text="Play" onClick={() => document.location.assign("https://github.com/behide-game/")} />
+        <Button.Primary text="Play" onClick={navigateToRepo} />
         {/* <Button icon={githubLogo} iconAlt="The GitHub logo" cssClass="github" text="open source" onClick={() => {}} /> */}
       </div>
     </div>
