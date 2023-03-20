@@ -1,6 +1,0 @@
-source https://api.nuget.org/v3/index.json
-
-nuget Fable.Node
-nuget Feliz prerelease
-nuget Feliz.ViewEngine
-nuget FSharp.Core

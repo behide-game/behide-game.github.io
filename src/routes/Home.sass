@@ -1,0 +1,168 @@
+.home
+  background-image: linear-gradient(107.56deg, #001432 0%, #000000 100%)
+  display: flex
+
+@mixin title-gradient
+  background: linear-gradient(92.75deg, #9EDDFF 10.61%, #DDF3FF 70.22%)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+  text-fill-color: transparent
+
+
+.left-part
+  flex: 1
+  display: flex
+  align-items: center
+  justify-content: center
+
+.right-part
+  flex: 0.95
+  background-image: linear-gradient(149.11deg, #FFFFFF 13.02%, #BFECFF 100%)
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%)
+
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  gap: 35px
+  padding: 5vh 60px 5vh 200px
+
+
+  .arrow
+    -webkit-mask: var(--arrow-down-path)
+    -webkit-mask-size: 40px
+    mask: var(--arrow-down-path)
+    mask-size: 40px
+
+    background-color: black
+    width: 40px
+    height: 40px
+
+  .features
+    display: flex
+    flex-direction: column
+    gap: 15px
+
+    .feature:first-child
+      flex: 1.3
+      border-radius: 40px 40px 3px 3px
+      font-size: 38px
+      font-family: Montserrat
+      font-style: italic
+      font-weight: 900
+      span
+        @include title-gradient
+        padding: 5px
+    .feature:last-child
+      border-radius: 3px 3px 30px 30px
+
+    .feature
+      background-image: linear-gradient(98.85deg, #FC6D26 17.65%, #FFBC9B 100%)
+      padding: 11px 35px
+      border-radius: 3px
+      flex: 1
+
+    .complex-feature .title
+      background-image: linear-gradient(98.85deg, #FC6D26 11.21%, #FFB088 100%)
+      padding: 11px 35px
+      border-radius: 3px
+      flex: 1
+
+    .feature, .complex-feature
+      color: white
+      font-size: 27px
+      font-family: Rubik
+      font-weight: 600
+      text-transform: uppercase
+      text-align: center
+
+    .complex-feature
+      display: inline-flex
+      justify-content: space-between
+      gap: 10px
+
+    .complex-feature .action
+      display: inline-block
+      height: 100%
+      aspect-ratio: 1
+      border-radius: 10px
+      background: center / 60% no-repeat var(--background-url), linear-gradient(45deg, #252A30 13.45%, #04336C 100%)
+      transition-property: transform border-radius
+      transition-duration: 100ms
+      transition-timing-function: ease-out
+
+      &:hover
+        transform: scale(1.09)
+        border-radius: 11px
+      &:active
+        transform: scale(1.03)
+        transition-duration: 80ms
+
+
+.banner
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  font-size: 5.5vw
+  font-family: 'Montserrat', sans-serif
+  text-transform: uppercase
+
+  .subtitle
+    color: white
+    font-size: 0.28em
+    font-weight: 300
+    line-height: 0em
+    align-self: flex-end
+    margin-right: 0.18em
+
+  .logo
+    display: flex
+    justify-content: center
+    align-items: center
+
+    img
+      z-index: 1
+      height: 1.3em
+      width: auto
+      aspect-ratio: 1
+      margin-right: -0.41em
+
+    .title
+      @include title-gradient
+      z-index: 0
+      font-weight: 900
+      font-size: 1em
+
+button
+  display: flex
+  justify-content: center
+  align-items: center
+
+  height: 65px
+  padding: 12px 17px
+  gap: 15px
+
+  border: none
+  border-radius: 5px
+
+  img
+    height: 100%
+
+  span.separator
+    width: 1px
+    height: 100%
+    background-color: white
+
+  span.text
+    font-family: Rubik, sans-serif
+    font-weight: 300
+    font-size: 20px
+    color: white
+    text-transform: uppercase
+
+button.github
+  background-image: linear-gradient(200deg, #172E4A 0%, #252A30 72.4%)
