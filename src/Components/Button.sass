@@ -16,7 +16,7 @@ button.primary
   font-weight: 700
   font-size: 22px
 
-  transition-property: background-image padding-left padding-right
+  transition-property: transform background-image padding-left padding-right
   transition-timing-function: ease-out
   transition-duration: 100ms
 
@@ -24,3 +24,17 @@ button.primary
     // background-image: linear-gradient(99.09deg, #0066ff 7.81%, #00B2FF 100%)
     padding-left: 43px
     padding-right: 43px
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  button.primary
+    padding: 46px 82px
+    height: 144px
+    font-size: 44px
+    border-radius: 6px
+    transition-duration: 80ms
+
+    &:hover
+      padding-left: 86px
+      padding-right: 86px
+    &:active
+      transform: scale(0.95)
