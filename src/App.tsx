@@ -24,12 +24,6 @@ export default () => {
 
   return (
     <>
-      {/* <nav style="display: flex; flex-direction: column;">
-        <A href="/">Home</A>
-        <Show when={session()} fallback={<A href="/login">Login</A>}>
-          <A href="/account">Account</A>
-        </Show>
-      </nav> */}
       <Routes>
         <Route path="/" component={Home} />
         <Route path="/login" element={<Show when={!session() && !loading()} fallback={<Navigate href="/account" />}><Login /></Show>} />

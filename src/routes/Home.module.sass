@@ -2,6 +2,16 @@
   background-image: linear-gradient(107.56deg, #001432 0%, #000000 100%)
   display: flex
 
+  margin: 0px
+  padding: 0px
+  border: none
+
+  width: 100vw
+  height: 100vh
+
+  *
+    user-select: none
+
 @mixin title-gradient
   background: linear-gradient(92.75deg, #9EDDFF 10.61%, #DDF3FF 70.22%)
   -webkit-background-clip: text
@@ -177,7 +187,6 @@ button.github
 
     clip-path: polygon(0 0, 100% 11%, 100% 100%, 0% 100%)
     padding: 50px 40px 20px 40px
-    // gap: 75px
 
     .arrow
       transform: rotateX(180deg)
@@ -185,18 +194,3 @@ button.github
     .features
       min-width: 75%
       font-size: 18px
-      // gap: 20px
-
-      .feature, .complex-feature .title
-        // border-radius: 10px
-        // padding: 22px 0px
-      .feature:first-child
-        // border-radius: 55px 55px 10px 10px
-        // padding: 22px 43px
-      .feature:last-child
-        // border-radius: 10px 10px 40px 40px
-
-      .complex-feature
-        // gap: 20px
-        .action
-          // border-radius: 20px

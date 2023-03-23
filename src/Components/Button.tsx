@@ -1,5 +1,5 @@
-import "./Button.sass"
+import sass from "./Button.module.sass"
 
 export const Primary = ({ text, onClick }: { text: string, onClick: () => void }) => (
-  <button class="primary" onClick={onClick}>{text}</button>
+  <button class={sass.primary} onClick={onClick}>{text}</button>
 )

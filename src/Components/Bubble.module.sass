@@ -1,0 +1,29 @@
+.bubble-container
+  position: relative
+  background: var(--background, white)
+
+  width: 100%
+  height: 100%
+
+  .color-burn
+    background-color: #000000
+    mix-blend-mode: color-burn
+  .color-dodge
+    background-color: hsl(0deg, 0%, var(--threshold, 50%))
+    mix-blend-mode: color-dodge
+
+  .color-burn, .color-dodge
+    position: absolute
+    top: 0px
+    right: 0px
+    bottom: 0px
+    left: 0px
+
+  .bubble
+    display: block
+    width: 200px
+    height: 200px
+
+    border-radius: 100px
+    background-color: black
+    filter: blur(var(--blur, 20px))

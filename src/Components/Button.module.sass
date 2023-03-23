@@ -7,7 +7,6 @@ button.primary
   height: 72px
 
   background-image: linear-gradient(99.09deg, #0066ff 7.81%, #00B2FF 100%)
-  // background-image: linear-gradient(99.09deg, #0066ffdd 7.81%, #00B2FFdd 100%)
   border-radius: 3px
 
   color: white
@@ -21,21 +20,19 @@ button.primary
   transition-duration: 100ms
 
   &:hover
-    // background-image: linear-gradient(99.09deg, #0066ff 7.81%, #00B2FF 100%)
     padding-left: 43px
     padding-right: 43px
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
   button.primary
     height: unset
-    padding: 20px 30px
-    // height: 144px
+    padding: 16px 36px
     font-size: 20px
-    // border-radius: 6px
+    border-radius: 3px
     transition-duration: 80ms
 
     &:hover
-      // padding-left: 86px
-      // padding-right: 86px
+      padding-left: unset
+      padding-right: unset
     &:active
       transform: scale(0.95)
