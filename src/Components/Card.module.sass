@@ -5,13 +5,11 @@
   border: 1px solid #30363d
   border-radius: 8px
   overflow: hidden
-  background-color: #161b22d8
-  backdrop-filter: blur(10px)
+  background-color: #161b22
 
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)
 
   &:hover
-    transition: unset
     .shine
       opacity: .85
 
@@ -21,12 +19,13 @@
   position: absolute
   top: 0px
   left: 0px
-  width: 300px
-  height: 300px
-  border-radius: 50px
+  width: 40%
+  aspect-ratio: 1
+  border-radius: 100%
   background-color: #5ebfff
 
-  filter: blur(100px)
+  filter: blur(10vw)
   mix-blend-mode: soft-light
   opacity: 0
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1)
+  will-change: transform

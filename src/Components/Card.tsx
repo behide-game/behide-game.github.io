@@ -2,7 +2,9 @@ import { createSignal, JSXElement, onMount } from "solid-js"
 import sass from "./Card.module.sass"
 
 type Props = {
-  children: JSXElement[] | JSXElement
+  children?: JSXElement[] | JSXElement,
+  className?: string,
+  style?: string
 }
 
 export const Card = (props: Props) => {
@@ -28,7 +30,7 @@ export const Card = (props: Props) => {
 
     let centeredX = (x - cardWidth() / 2) / cardWidth() * -2
     let centeredY = (y - cardHeight() / 2) / cardHeight() * 2
-    card.style.transform = `perspective(500px) rotateX(${centeredY}deg) rotateY(${centeredX}deg)`
+    card.style.transform = `perspective(600px) rotateX(${centeredY}deg) rotateY(${centeredX}deg)`
   }
 
   let handleLeave = () => {
@@ -47,7 +49,12 @@ export const Card = (props: Props) => {
   })
 
   return (
-    <div onPointerLeave={handleLeave} onPointerMove={handleMove} class={sass.card} ref={card}>
+    <div
+      style={props.style || ""}
+      onPointerMove={handleMove}
+      onPointerLeave={handleLeave}
+      class={sass.card}
+      ref={card}>
       <span class={sass.shine} ref={shine} />
       {props.children}
     </div>
