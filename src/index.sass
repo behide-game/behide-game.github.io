@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&family=Rubik:wght@300;600&display=swap')
+@font-face
+  font-family: 'Mona Sans'
+  src: url('./assets/Mona-Sans.woff2') format('woff2 supports variations'), url('./assets/Mona-Sans.woff2') format('woff2-variations')
+  font-weight: 200 900
+  font-stretch: 75% 125%
+@font-face
+  font-family: 'Hubot Sans'
+  src: url('./assets/Hubot-Sans.woff2') format('woff2 supports variations'), url('./assets/Hubot-Sans.woff2') format('woff2-variations'), url('./assets/Hubot-Sans.woff') format('woff-variations'), url('./assets/Hubot-Sans.ttf') format('truetype-variations')
+  font-weight: 200 900
+  font-stretch: 75% 125%
 
 html, body, #root, .home
   margin: 0px
@@ -6,7 +16,8 @@ html, body, #root, .home
   border: none
 
   width: 100vw
-  height: 100vh
+  min-height: 100vh
+  overflow-x: hidden
 
   *
     user-select: none
