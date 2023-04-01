@@ -4,7 +4,7 @@ import { Router } from "@solidjs/router"
 import App from "./App";
 import "./index.sass"
 
-const root = document.getElementById("root");
+const root = document.body;
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   throw new Error(

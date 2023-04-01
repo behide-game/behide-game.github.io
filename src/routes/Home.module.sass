@@ -22,6 +22,33 @@
   margin: 0px
 
 
+// Links
+a
+  position: relative
+  color: white
+  font-family: 'Mona Sans'
+  text-decoration: none
+  font-weight: 600
+  font-size: 0.6em
+  text-transform: capitalize
+a::after
+  content: ""
+  position: absolute
+  left: 0
+  bottom: -0.15em
+  width: calc(100%)
+  height: 2px
+
+  pointer-events: none
+  background-color: currentColor
+  transform: scaleX(0)
+  transform-origin: 0 0
+  transition: transform .3s ease
+a:hover::after
+  transform: scaleX(1)
+
+
+// Logo + Title
 .banner
   margin-top: 9vh
   display: flex
@@ -65,73 +92,84 @@
     text-transform: uppercase
     font-feature-settings: 'tnum' on, 'lnum' on, 'case' on, 'salt' on
 
+.animated-text .animated-char
+  font-variation-settings: "wght" calc((1 - var(--variation, 1)) * (900 - 200) + 200), "wdth" calc((1 - var(--variation, 1)) * (125 - 100) + 100)
+  transition: font-variation-settings .2s
 
 
-#ball
-  position: relative
+
+#ball-background
+  z-index: 0
+  position: absolute
   top: 13.6vh
-  left: -8vw
+  left: -8vh
 
-  padding: 0px 8vw
-
-  width: 100vw
-  height: 100vw
+  width: calc(100vw + 16vh)
+  height: calc(100vw + 16vh)
   border-radius: 100%
 
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 20%)
   box-shadow: 0px -10px 40px rgba(3, 0, 159, 0.25), 0px -45px 94px rgba(255, 255, 255, 0.14), inset -10px -10px 6px rgba(0, 0, 0, 0.25), inset 1px 1px 46px rgba(159, 238, 255, 0.32), inset 2px 2px 15px rgba(114, 164, 252, 0.49)
 
 
-  .content
-    width: calc(100% - 2 * 10vw)
-    height: calc(100% - 2 * 8vh)
-    max-height: 35vh
-    margin: 8vh 10vw
+.content
+  flex: 1
+  position: relative
+  overflow: hidden
+  padding: 7vh
+  padding-top: 20.6vh
 
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    align-items: center
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
 
-    color: white
-    font-size: 5vh
+  color: white
+  font-size: 5vh
+
+  *
+    z-index: 1
+
+  h1
+    @include title-gradient
+    padding-right: 0.2em
     font-family: 'Mona Sans'
+    font-style: italic
+    font-size: 1em
+    font-weight: 900
+    font-stretch: 125%
+    text-transform: uppercase
+    font-feature-settings: 'tnum' on, 'lnum' on, 'salt' on
 
-    h1
-      @include title-gradient
-      padding-right: 0.2em
-      font-size: 1em
-      font-style: italic
-      font-weight: 900
-      font-stretch: 125%
-      text-transform: uppercase
-      font-feature-settings: 'tnum' on, 'lnum' on, 'salt' on
 
-    a
-      position: relative
-      color: white
-      text-decoration: none
-      font-weight: 600
-      font-size: 0.5em
-      text-transform: capitalize
-    a::after
-      content: ""
-      position: absolute
-      left: 0
-      bottom: -0.15em
-      width: calc(100%)
-      height: 2px
+.features
+  width: 600px
+  display: flex
+  justify-content: space-between
+  align-items: center
 
-      pointer-events: none
-      background-color: currentColor
-      transform: scaleX(0)
-      transform-origin: 0 0
-      transition: transform .3s ease
-    a:hover::after
-      transform: scaleX(1)
+  .feature
+    flex: 1
+    font-family: 'Hubot Sans'
+    font-style: normal
+    font-weight: 550
+    font-size: 0.7em
+    line-height: 1em
+    text-transform: capitalize
+    font-feature-settings: 'tnum' on, 'lnum' on
+    font-variation-settings: 'ital' 0
 
-    .features
-      display: flex
-      justify-content: space-between
-      align-items: center
-      gap: 70px
+    background: linear-gradient(110.97deg, var(--color, #2B68E3) 0%, #FFFFFF 100%)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-clip: text
+    text-fill-color: transparent
+
+    transition: font-weight .2s, font-stretch .2s, font-variation-settings .2s
+
+  .feature:nth-child(2)
+    flex: 3
+    text-align: center
+
+  .feature:hover
+    font-variation-settings: 'ital' 10
