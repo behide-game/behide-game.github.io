@@ -17,7 +17,7 @@ const AnimatedText = (props: { className?: string;  children: string }) => {
   const [charList, setCharList] = createSignal(initialeCharList)
 
   // Logic
-  const handleHover = (evt: PointerEvent, index: number) => {
+  const handleHover = (index: number) => {
     const charIndex = index
 
     const limit = 4
@@ -45,7 +45,7 @@ const AnimatedText = (props: { className?: string;  children: string }) => {
           id={item()[0].toString()}
           class={sass["animated-char"]}
           style={`--variation: ${item()[2]};`}
-          onPointerMove={evt => handleHover(evt, index)}
+          onPointerMove={() => handleHover(index)}
         >
           {item()[1]}
         </span>
@@ -56,21 +56,32 @@ const AnimatedText = (props: { className?: string;  children: string }) => {
 
 export default () => {
   return (
-    <div class={sass.home}>
-      <Banner />
+    <>
+      <div class={sass.home}>
+        <Banner />
 
-      <div class={sass.content}>
-        <div id={sass["ball-background"]}/>
-        <h1>What is that !?</h1>
+        <div class={sass["ball-container"]}>
+          <div id={sass["ball-background"]} />
 
-        <div class={sass.features}>
-          <span class={sass.feature} style="--color: #6556D9;">Open<br/>source</span>
-          <span class={sass.feature} style="--color: #2B68E3;">Free to play</span>
-          <span class={sass.feature} style="--color: #8A93A6;">Unity<br/>Engine</span>
+          <div class={sass.content}>
+            <h1>What is that !?</h1>
+
+            <div class={sass.features}>
+              <span class={sass.feature} style="--color: #6556D9;">Open<br/>source</span>
+              <span class={sass.feature} style="--color: #2B68E3;">Free to play</span>
+              <span class={sass.feature} style="--color: #8A93A6;">Unity<br/>engine</span>
+              <span class={`${sass.feature} ${sass.mobile}`} style="--color: #6556D9;">Open source</span>
+              <span class={`${sass.feature} ${sass.mobile}`} style="--color: #2B68E3;">Free to play</span>
+              <span class={`${sass.feature} ${sass.mobile}`} style="--color: #8A93A6;">Unity engine</span>
+            </div>
+
+            <a href="https://github.com/behide-game/">See on GitHub</a>
+          </div>
         </div>
 
-        <a href="https://github.com/behide-game/">See on GitHub</a>
       </div>
-    </div>
+
+      {/* <div class={sass["detailed-info"]}></div> */}
+    </>
   )
 }
