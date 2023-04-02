@@ -21,6 +21,7 @@
   "dependencies": {
     "@solidjs/router": "^0.8.0",
     "@supabase/supabase-js": "^2.11.0",
+    "postcss-media-minmax": "^5.0.0",
     "solid-js": "^1.6.10"
   },
   "packageManager": "yarn@3.5.0"

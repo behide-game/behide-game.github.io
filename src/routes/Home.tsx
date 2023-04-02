@@ -80,8 +80,6 @@ export default () => {
         </div>
 
       </div>
-
-      {/* <div class={sass["detailed-info"]}></div> */}
     </>
   )
 }
