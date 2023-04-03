@@ -55,7 +55,7 @@ a:hover::after
   justify-content: center
   align-items: center
   font-family: 'Hubot Sans'
-  font-size: 130px
+  font-size: 7vw
 
   .logo
     display: flex
@@ -68,6 +68,9 @@ a:hover::after
       width: 1.1em
       aspect-ratio: 1
       filter: drop-shadow(0px 13px 15px rgba(0, 0, 0, 0.45))
+      transition: transform .3s ease
+    img:hover
+      transform: translateY(10px) scale(.96)
 
     .title
       @include title-gradient
@@ -100,7 +103,7 @@ a:hover::after
 #ball-background
   z-index: 0
   position: absolute
-  top: 13.6vh
+  top: 15vh
   left: -8vh
 
   width: calc(100vw + 16vh)
@@ -117,7 +120,7 @@ a:hover::after
   position: relative
   overflow: hidden
   padding: 7vh
-  padding-top: 20.6vh
+  padding-top: 23vh
 
   color: white
   font-size: 5vh
@@ -183,7 +186,13 @@ a:hover::after
     font-variation-settings: 'ital' 10
 
 
-@media (width <= 1140px)
+@media (width <= 1000px)
+  .banner
+    font-size: 80px
+    .subtitle
+      font-size: 0.27em
+
+@media (width <= 700px)
   .features
     flex-direction: column
     width: fit-content
@@ -195,15 +204,6 @@ a:hover::after
     .feature.mobile
       display: unset
       align-self: stretch
-
-@media (width <= 1000px)
-  .banner
-    font-size: 80px
-    .logo
-      img
-        width: 1.3em
-    .subtitle
-      font-size: 0.27em
 
 @media (width <= 620px)
   #ball-background
@@ -223,7 +223,7 @@ a:hover::after
   .ball-container
     padding: 10vw
     padding-top: 23vh
-    font-size: 8vw
+    font-size: 7vw
 
   .features
     .feature.mobile
@@ -231,6 +231,10 @@ a:hover::after
 
   a
     font-size: 0.8em
+
+@media (width <= 450px)
+  .ball-container
+    font-size: 8vw
 
 @media (width <= 360px)
   .banner
