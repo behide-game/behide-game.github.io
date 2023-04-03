@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    require("autoprefixer"),
-    require("postcss-media-minmax")
+    require("postcss-media-minmax"),
+    require("autoprefixer")
   ]
 }
