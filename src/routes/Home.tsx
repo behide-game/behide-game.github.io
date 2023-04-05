@@ -1,5 +1,8 @@
 import { createSignal, Index } from "solid-js"
+import { Link } from "../Components/Link"
 import behideLogo from "../assets/behide.svg"
+import githubIllustration from "../assets/GitHub-illustration.png"
+import unityLogo from "../assets/Unity-logo.svg"
 import sass from "./Home.module.sass"
 
 const Banner = () => (
@@ -12,9 +15,10 @@ const Banner = () => (
   </div>
 )
 
-const AnimatedText = (props: { className?: string;  children: string }) => {
+const AnimatedText = (props: { className?: string; children: string }) => {
   const initialeCharList = props.children.split("").map((char, index) => char === " " ? [index, "\u00A0", 1] : [index, char, 1])
   const [charList, setCharList] = createSignal(initialeCharList)
+
 
   // Logic
   const handleHover = (index: number) => {
@@ -38,6 +42,8 @@ const AnimatedText = (props: { className?: string;  children: string }) => {
     setCharList(initialeCharList)
   }
 
+
+  // UI
   return (
     <div class={`${sass["animated-text"]} ${props.className || ""}`} onPointerLeave={handleLeave}>
       <Index each={charList()}>{(item, index) =>
@@ -55,6 +61,9 @@ const AnimatedText = (props: { className?: string;  children: string }) => {
 }
 
 export default () => {
+  const githubRepoUrl = "https://github.com/behide-game"
+  const unityUrl = "https://unity.com/"
+
   return (
     <>
       <div class={sass.home}>
@@ -63,7 +72,7 @@ export default () => {
         <div class={sass["ball-container"]}>
           <div id={sass["ball-background"]} />
 
-          <div class={sass.content}>
+          <div class={sass.summary}>
             <h1>What is that !?</h1>
 
             <div class={sass.features}>
@@ -74,11 +83,30 @@ export default () => {
               <span class={`${sass.feature} ${sass.mobile}`} style="--color: #2B68E3;">Free to play</span>
               <span class={`${sass.feature} ${sass.mobile}`} style="--color: #8A93A6;">Unity engine</span>
             </div>
-
-            <a href="https://github.com/behide-game/">See on GitHub</a>
           </div>
         </div>
 
+        <div class={sass["content-container"]}>
+          <div class={sass.content}>
+            <div class={sass.part}>
+              <div class={sass.head}>
+                <h1 style="--gradient-color: #6556D9;" class={sass.title}>Fully\u00A0<i>Open Source</i></h1>
+                <span class={sass.description}>All the code is available on GitHub</span>
+              </div>
+              <Link href={githubRepoUrl}>Let's see the code</Link>
+              <img src={githubIllustration} alt="An octocat playing." />
+            </div>
+
+            <div class={sass.part}>
+              <div class={sass.head}>
+                <h1 style="--gradient-color: #8A93A6;" class={sass.title}>Made with\u00A0<i>Unity</i></h1>
+                <span class={sass.description}>This game is made with the popular game engine Unity 3D.</span>
+              </div>
+              <img class={sass["unity-logo"]} src={unityLogo} alt="The logo of Unity." />
+              <Link href={unityUrl}>Show me Unity</Link>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )
