@@ -227,7 +227,8 @@
 
   display: flex
   flex-direction: column
-  gap: 100px
+  align-items: center
+  gap: 120px
   padding: 50px 24px 40px 24px
 
   background: linear-gradient(149.11deg, #FFFFFF 13.02%, #BFECFF 100%), black
@@ -239,6 +240,9 @@
   align-items: flex-start
   gap: 22px
 
+  width: 100%
+  max-width: 500px
+
 .head
   h1.title
     font-family: 'Mona Sans'
@@ -248,6 +252,7 @@
 
     display: flex
     align-items: center
+    font-stretch: 115
     font-feature-settings: 'tnum' on, 'lnum' on, 'salt' on
 
     background: linear-gradient(131.8deg, var(--gradient-color, #6556D9) 25.57%, #06070B 87.68%)
@@ -255,7 +260,6 @@
     -webkit-text-fill-color: transparent
     background-clip: text
     text-fill-color: transparent
-    font-stretch: 115
   .description
     display: block
     margin-top: 5px
@@ -268,7 +272,16 @@
 
 .part img
   width: 100%
-.part img.unity-logo
-  width: auto
-  height: 90px
-  align-self: center
+.part
+  #github-illustration
+    max-width: 450px
+    align-self: center
+
+  #unity-logo
+    width: auto
+    height: 90px
+    align-self: center
+
+@media (width > 620px)
+  .content
+    gap: 130px

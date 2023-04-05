@@ -94,7 +94,7 @@ export default () => {
                 <span class={sass.description}>All the code is available on GitHub</span>
               </div>
               <Link href={githubRepoUrl}>Let's see the code</Link>
-              <img src={githubIllustration} alt="An octocat playing." />
+              <img id={sass["github-illustration"]} src={githubIllustration} alt="An octocat playing." />
             </div>
 
             <div class={sass.part}>
@@ -102,7 +102,7 @@ export default () => {
                 <h1 style="--gradient-color: #8A93A6;" class={sass.title}>Made with\u00A0<i>Unity</i></h1>
                 <span class={sass.description}>This game is made with the popular game engine Unity 3D.</span>
               </div>
-              <img class={sass["unity-logo"]} src={unityLogo} alt="The logo of Unity." />
+              <img id={sass["unity-logo"]} src={unityLogo} alt="The logo of Unity." />
               <Link href={unityUrl}>Show me Unity</Link>
             </div>
           </div>
