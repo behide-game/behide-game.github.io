@@ -86,25 +86,23 @@ export default () => {
           </div>
         </div>
 
-        <div class={sass["content-container"]}>
-          <div class={sass.content}>
-            <div class={sass.part}>
-              <div class={sass.head}>
-                <h1 style="--gradient-color: #6556D9;" class={sass.title}>Fully\u00A0<i>Open Source</i></h1>
-                <span class={sass.description}>All the code is available on GitHub</span>
-              </div>
-              <Link href={githubRepoUrl}>Let's see the code</Link>
-              <img id={sass["github-illustration"]} src={githubIllustration} alt="An octocat playing." />
+        <div class={sass.content}>
+          <div class={sass.part}>
+            <div class={sass.head}>
+              <h1 style="--gradient-color: #6556D9;" class={sass.title}>Fully\u00A0<i>Open Source</i></h1>
+              <span class={sass.description}>All the code is available on GitHub</span>
             </div>
+            <Link href={githubRepoUrl}>Let's see the code</Link>
+            <img id={sass["github-illustration"]} src={githubIllustration} alt="An octocat playing." />
+          </div>
 
-            <div class={sass.part}>
-              <div class={sass.head}>
-                <h1 style="--gradient-color: #8A93A6;" class={sass.title}>Made with\u00A0<i>Unity</i></h1>
-                <span class={sass.description}>This game is made with the popular game engine Unity 3D.</span>
-              </div>
-              <img id={sass["unity-logo"]} src={unityLogo} alt="The logo of Unity." />
-              <Link href={unityUrl}>Show me Unity</Link>
+          <div class={sass.part}>
+            <div class={sass.head}>
+              <h1 style="--gradient-color: #8A93A6;" class={sass.title}>Made with\u00A0<i>Unity</i></h1>
+              <span class={sass.description}>This game is made with the popular game engine Unity 3D.</span>
             </div>
+            <img id={sass["unity-logo"]} src={unityLogo} alt="The logo of Unity." />
+            <Link href={unityUrl}>Show me Unity</Link>
           </div>
         </div>
       </div>

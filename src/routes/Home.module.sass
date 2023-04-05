@@ -94,8 +94,7 @@
   display: flex
   position: relative
   overflow: hidden
-  padding: 7vh
-  padding-top: 23vh
+  padding: 23vh 7vh 10vh 7vh
 
   color: white
   font-size: 5vh
@@ -198,8 +197,7 @@
       font-size: 0.27em
 
   .ball-container
-    padding: 10vw
-    padding-top: 23vh
+    padding: 23vh 10vw calc(10vw + 3vh) 10vw
     font-size: 7vw
 
   .features
@@ -217,12 +215,9 @@
 
 
 // Second part of the UI
-.content-container
-  all: unset
-  background-color: black
-
 .content
-  clip-path: polygon(0 0, 100% 3%, 100% 100%, 0% 100%)
+  margin-top: -5vh
+  clip-path: polygon(0 0, 100% 5vh, 100% 100%, 0% 100%)
   width: calc(100% - 2 * 24px)
 
   display: flex
