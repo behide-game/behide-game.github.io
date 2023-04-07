@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/MainLayout.astro"
+import Link from "../components/Link.astro"
+import AnimatedText from "../components/AnimatedText"
+
+import behideLogo from "../assets/images/behide.svg"
+import githubIllustration from "../assets/images/GitHub-illustration.webp"
+import unityLogo from "../assets/images/Unity-logo.svg"
+import sass from "./Home.module.sass"
+import "./index.sass"
+
+const githubRepoUrl = "https://github.com/behide-game"
+const unityUrl = "https://unity.com/"
+---
+
+<Layout>
+  <main>
+    <div class={sass.home}>
+      <div class={sass.banner}>
+        <div class={sass.logo}>
+          <img src={behideLogo.src} alt="The Behide logo" />
+          <span class={sass.title}>Behide</span>
+        </div>
+        <AnimatedText client:load className={sass.subtitle}><>The new prop hunt</></AnimatedText>
+      </div>
+
+      <div class={sass["ball-container"]}>
+        <div id={sass["ball-background"]} />
+
+        <div class={sass.summary}>
+          <h1>What is that !?</h1>
+
+          <div class={sass.features}>
+            <span class={sass.feature} style="--color: #6556D9;">Open<br/>source</span>
+            <span class={sass.feature} style="--color: #2B68E3;">Free to play</span>
+            <span class={sass.feature} style="--color: #8A93A6;">Unity<br/>engine</span>
+            <span class={`${sass.feature} ${sass.mobile}`} style="--color: #6556D9;">Open source</span>
+            <span class={`${sass.feature} ${sass.mobile}`} style="--color: #2B68E3;">Free to play</span>
+            <span class={`${sass.feature} ${sass.mobile}`} style="--color: #8A93A6;">Unity engine</span>
+          </div>
+        </div>
+      </div>
+
+      <div class={sass.content}>
+        <div class={sass.part}>
+          <div class={sass.head}>
+            <h1 style="--gradient-color: #6556D9;" class={sass.title}>Fully&nbsp;<i>Open Source</i></h1>
+            <span class={sass.description}>All the code is available on GitHub</span>
+          </div>
+          <Link href={githubRepoUrl}>Let's see the code</Link>
+          <img id={sass["github-illustration"]} src={githubIllustration.src} alt="An octocat playing." />
+        </div>
+
+        <div class={sass.part}>
+          <div class={sass.head}>
+            <h1 style="--gradient-color: #8A93A6;" class={sass.title}>Made with&nbsp;<i>Unity</i></h1>
+            <span class={sass.description}>This game is made with the popular game engine Unity 3D.</span>
+          </div>
+          <img id={sass["unity-logo"]} src={unityLogo.src} alt="The logo of Unity." />
+          <Link href={unityUrl}>Show me Unity</Link>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

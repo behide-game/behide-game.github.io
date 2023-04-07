@@ -1,6 +1,7 @@
-module.exports = {
-  plugins: [
-    require("postcss-media-minmax"),
-    require("autoprefixer")
-  ]
-}
+import mediaMinMax from "postcss-media-minmax"
+import autoprefixer from "autoprefixer"
+
+export const plugins = [
+  mediaMinMax,
+  autoprefixer
+]
