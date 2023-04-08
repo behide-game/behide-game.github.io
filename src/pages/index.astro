@@ -31,36 +31,36 @@ const unityUrl = "https://unity.com/"
           <h1>What is that !?</h1>
 
           <div class={sass.features}>
-            <span class={sass.feature} style="--color: #6556D9;">Open<br/>source</span>
-            <span class={sass.feature} style="--color: #2B68E3;">Free to play</span>
-            <span class={sass.feature} style="--color: #8A93A6;">Unity<br/>engine</span>
-            <span class={`${sass.feature} ${sass.mobile}`} style="--color: #6556D9;">Open source</span>
-            <span class={`${sass.feature} ${sass.mobile}`} style="--color: #2B68E3;">Free to play</span>
-            <span class={`${sass.feature} ${sass.mobile}`} style="--color: #8A93A6;">Unity engine</span>
+            <a href="#open-source" class={sass.feature} style="--color: #6556D9;">Open<br/>source</a>
+            <a href="#free-to-play" class={sass.feature} style="--color: #2B68E3;">Free to play</a>
+            <a href="#game-engine" class={sass.feature} style="--color: #8A93A6;">Unity<br/>engine</a>
+            <a href="#open-source" class={`${sass.feature} ${sass.mobile}`} style="--color: #6556D9;">Open source</a>
+            <a href="#free-to-play" class={`${sass.feature} ${sass.mobile}`} style="--color: #2B68E3;">Free to play</a>
+            <a href="#game-engine" class={`${sass.feature} ${sass.mobile}`} style="--color: #8A93A6;">Unity engine</a>
           </div>
         </div>
       </div>
 
       <div class={sass.content}>
-        <div class={sass.part}>
+        <div class={sass.part} id="open-source">
           <div class={sass.head}>
-            <h1 style="--gradient-color: #6556D9;" class={sass.title}>Fully&nbsp;<i>Open Source</i></h1>
+            <a href="#open-source" style="--gradient-color: #6556D9;" class={sass.title}>Fully&nbsp;<i>Open Source</i></a>
             <span class={sass.description}>All the code is available on GitHub</span>
           </div>
           <Link href={githubRepoUrl}>Let's see the code</Link>
           <img id={sass["github-illustration"]} src={githubIllustration.src} alt="An octocat playing." />
         </div>
 
-        <div class={sass.part}>
+        <div class={sass.part} id="free-to-play">
           <div class={sass.head}>
-            <h1 style="--gradient-color: #2B68E3;" class={sass.title}><i>Free</i>&nbsp; to Play</h1>
+            <a href="#free-to-play" style="--gradient-color: #2B68E3;" class={sass.title}><i>Free</i>&nbsp; to Play</a>
             <span class={sass.description}>Being open source, Behide is entirely free to play and will remain so</span>
           </div>
         </div>
 
-        <div class={sass.part}>
+        <div class={sass.part} id="game-engine">
           <div class={sass.head}>
-            <h1 style="--gradient-color: #8A93A6;" class={sass.title}>Made with&nbsp;<i>Unity</i></h1>
+            <a href="#game-engine" style="--gradient-color: #8A93A6;" class={sass.title}>Made with&nbsp;<i>Unity</i></a>
             <span class={sass.description}>This game is made with the popular Unity 3D game engine</span>
           </div>
           <img id={sass["unity-logo"]} src={unityLogo.src} alt="The logo of Unity." />
