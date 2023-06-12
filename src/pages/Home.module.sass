@@ -1,7 +1,10 @@
 .home
-  background-image: radial-gradient(56.6% 87.56% at 50% 50%, #100D8F 0%, #0D1117 100%)
+  background-image: url("/gradients/gradient_2x.webp")
+  background-size: 100% 100%
   display: flex
   flex-direction: column
+  align-items: center
+  justify-content: space-between
 
   margin: 0px
   padding: 0px
@@ -13,6 +16,12 @@
   *
     user-select: none
 
+.home > div:first-child
+    margin-top: 9vh
+.home > div:last-child
+    margin-bottom: 9vh
+
+
 @mixin title-gradient
   background: linear-gradient(92.75deg, #9EDDFF 10.61%, #DDF3FF 70.22%)
   -webkit-background-clip: text
@@ -22,15 +31,14 @@
   margin: 0px
 
 
-// Logo + Title
+// Banner = Logo + Title + Subtitle
 .banner
-  margin-top: 9vh
   display: flex
   flex-direction: column
   justify-content: center
   align-items: center
   font-family: 'Hubot Sans'
-  font-size: 7vw
+  font-size: 130px
 
   .logo
     display: flex
@@ -40,7 +48,7 @@
 
     img
       z-index: 1
-      width: 1.1em
+      width: 1em
       aspect-ratio: 1
       filter: drop-shadow(0px 13px 15px rgba(0, 0, 0, 0.45))
       transition: transform .3s ease
@@ -51,7 +59,7 @@
       @include title-gradient
       width: 100%
       margin-top: -0.35em
-      font-size: 1em
+      font-size: 0.9em
       font-style: normal
       font-weight: 900
       font-stretch: 125%
@@ -61,218 +69,141 @@
 
   .subtitle
     color: white
-    margin-top: -0.3em
+    margin-top: -0.5em
     font-size: 0.23em
-    font-style: italic
     font-weight: 200
     font-stretch: 87.5%
     text-transform: uppercase
     font-feature-settings: 'tnum' on, 'lnum' on, 'case' on, 'salt' on
 
 
-
-#ball-background
-  z-index: 0
-  position: absolute
-  top: 15vh
-  left: -8vh
-
-  width: calc(100vw + 16vh)
-  height: calc(100vw + 16vh)
-  border-radius: 100%
-
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 20%)
-  box-shadow: 0px -10px 40px rgba(3, 0, 159, 0.25), 0px -45px 94px rgba(255, 255, 255, 0.14), inset -10px -10px 6px rgba(0, 0, 0, 0.25), inset 1px 1px 46px rgba(159, 238, 255, 0.32), inset 2px 2px 15px rgba(114, 164, 252, 0.49)
-
-
-.ball-container
-  flex: 1
+.content
   display: flex
-  position: relative
-  overflow: hidden
-  padding: 23vh 7vh 10vh 7vh
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+  gap: 70px
 
+// Call to action button
+button
+  padding: 18px 25px
+  background: linear-gradient(117.54deg, #003078 0%, #003380 100%)
+  border-radius: 100px
+  border: none
+  color: #ffffff
+
+  font-family: 'Mona Sans'
+  font-size: 24px
+  font-weight: 900
+  font-stretch: 125%
+  text-transform: uppercase
+  text-align: center
+
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 10px
+
+  span
+    margin-bottom: -2px
+
+  .arrow
+    scale: 1.2
+    width: 19px
+    height: 19px
+    transition: transform .2s
+
+    .chevron
+      position: absolute
+      transform: translateX(-4px)
+      transition: transform .3s
+
+    .line
+      display: block
+      width: 10.5px
+      height: 1.8px
+      border-radius: 10px
+
+      transform: scaleX(0)
+      transform-origin: center
+      transition: transform .3s
+
+button:hover
+  .arrow
+    .chevron
+      transform: translateX(0px)
+    .line
+      transform: scaleX(1)
+button:active
+  .arrow
+    transform: translateX(0.1em)
+
+
+// Cards
+.cards
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+  gap: 100px
+
+.card
+  display: flex
+  flex-direction: column
+  padding: 25px 25px
+  gap: 15px
+
+  border-radius: 20px
+  background: linear-gradient(117.54deg, rgba(172, 172, 172, 0.05) 0%, rgba(0, 0, 0, 0.1) 100%)
+  backdrop-filter: blur(12px)
+  border: 1px solid rgba(255, 255, 255, 0.18)
+
+  font-family: "Mona Sans"
   color: white
-  font-size: 5vh
 
-  *
-    z-index: 1
-
-  .summary
-    flex: 1
-    min-height: 22.5vh
-    max-height: 10em // = 50vh
-
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    align-items: center
-    gap: 30px
+  max-width: 290px
 
   h1
-    @include title-gradient
-    padding-right: 0.2em
-    font-family: 'Mona Sans'
-    font-style: italic
-    font-size: 1em
+    margin: 0px
+    padding: 0px
+    font-size: 28px
     font-weight: 900
     font-stretch: 125%
     text-transform: uppercase
-    font-feature-settings: 'tnum' on, 'lnum' on, 'salt' on
 
+  p
+    margin: 0px
+    padding: 0px
+    font-size: 20px
+    font-weight: 430
 
-.features
-  width: 65vh
-  max-width: 75vw
-  display: flex
-  justify-content: space-between
-  align-items: center
-
-  .feature.mobile
-    display: none
-
-  .feature
-    flex: 1
-    font-family: 'Hubot Sans'
-    font-style: normal
-    font-weight: 550
-    font-size: 0.7em
-    line-height: 1.3em
-    text-transform: capitalize
-    font-feature-settings: 'tnum' on, 'lnum' on
-    font-variation-settings: 'ital' 0
-
-    background: linear-gradient(110.97deg, var(--color, #2B68E3) 0%, #FFFFFF 100%)
-    -webkit-background-clip: text
-    -webkit-text-fill-color: transparent
-    background-clip: text
-    text-fill-color: transparent
-
-    transition: font-weight .2s, font-stretch .2s, font-variation-settings .2s
-
-  .feature:nth-child(2)
-    flex: 3
-    text-align: center
-
-  .feature:hover
-    font-variation-settings: 'ital' 10
+  a
+    color: white
+    font-size: 20px
 
 
 @media (width <= 1000px)
+  .home
+    background-image: url("/gradients/gradient_1x.webp")
+    gap: 90px
+  .home > div:last-child
+      margin-bottom: 3vh
+
   .banner
-    font-size: 80px
+    font-size: 15vw
     .subtitle
-      font-size: 0.27em
+      font-size: 4vw
 
-@media (width <= 700px)
-  .features
-    flex-direction: column
-    width: fit-content
-    gap: 12px
-
-    .feature
-      display: none
-
-    .feature.mobile
-      display: unset
-      align-self: stretch
-
-@media (width <= 620px)
-  #ball-background
-    left: -16vh
-    width: calc(100vw + 32vh)
-    height: calc(100vw + 32vh)
-
-@media (width <= 600px)
-  .banner
-    font-size: 65px
-    .logo
-      img
-        width: 1.3em
-    .subtitle
-      font-size: 0.27em
-
-  .ball-container
-    padding: 23vh 10vw calc(10vw + 3vh) 10vw
-    font-size: 7vw
-
-  .features
-    .feature.mobile
-      font-size: 0.8em
-
-@media (width <= 450px)
-  .ball-container
-    font-size: 8vw
-
-@media (width <= 360px)
-  .banner
-    font-size: 18vw
-
-
-
-// Second part of the UI
-.content
-  margin-top: -5vh
-  clip-path: polygon(0 0, 100% 5vh, 100% 100%, 0% 100%)
-  width: calc(100% - 2 * 24px)
-
-  display: flex
-  flex-direction: column
-  align-items: center
-  gap: 100px
-  padding: 50px 24px 40px 24px
-
-  background: linear-gradient(149.11deg, #FFFFFF 13.02%, #BFECFF 100%), black
-
-.part
-  display: flex
-  flex-direction: column
-  justify-content: space-between
-  align-items: flex-start
-  gap: 22px
-
-  width: 100%
-  max-width: 500px
-
-.head
-  .title
-    font-family: 'Mona Sans'
-    font-weight: 700
-    font-size: 35px
-    margin: 0px
-    padding-right: 0.2em
-    width: fit-content
-
-    font-stretch: 115
-    font-feature-settings: 'tnum' on, 'lnum' on, 'salt' on
-
-    background: linear-gradient(131.8deg, var(--gradient-color, #6556D9) 25.57%, #06070B 87.68%)
-    -webkit-background-clip: text
-    -webkit-text-fill-color: transparent
-    background-clip: text
-    text-fill-color: transparent
-  .description
-    display: block
-    margin-top: 5px
-
-    color: #06070B
-    font-family: 'Mona Sans'
-    font-weight: 430
-    font-size: 20px
-    font-feature-settings: 'tnum' on, 'lnum' on
-
-.part img
-  width: 100%
-.part
-  #github-illustration
-    max-width: 450px
-    align-self: center
-
-  #unity-logo
-    width: auto
-    height: 90px
-    align-self: center
-
-@media (width > 620px)
   .content
-    gap: 120px
+    gap: 35px
+
+  .cards
+    gap: 20px
+
+
+@media (width <= 750px)
+  .banner
+    font-size: 20vw
+    .subtitle
+      font-size: 6vw

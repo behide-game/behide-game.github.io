@@ -4,18 +4,17 @@ import Link from "../components/Link.astro"
 import AnimatedText from "../components/AnimatedText"
 
 import behideLogo from "../assets/images/behide.svg"
-import githubIllustration from "../assets/images/GitHub-illustration.webp"
-import unityLogo from "../assets/images/Unity-logo.svg"
 import sass from "./Home.module.sass"
 import "./index.sass"
 
 const githubRepoUrl = "https://github.com/behide-game"
-const unityUrl = "https://unity.com/"
+const githubDownloadUrl = "https://github.com/behide-game/behide/releases"
 ---
 
 <Layout>
   <main>
     <div class={sass.home}>
+      <!-- Banner -->
       <div class={sass.banner}>
         <div class={sass.logo}>
           <img src={behideLogo.src} alt="The Behide logo" />
@@ -24,49 +23,31 @@ const unityUrl = "https://unity.com/"
         <AnimatedText client:load className={sass.subtitle}><>The new prop hunt</></AnimatedText>
       </div>
 
-      <div class={sass["ball-container"]}>
-        <div id={sass["ball-background"]} />
-
-        <div class={sass.summary}>
-          <h1>What is that !?</h1>
-
-          <div class={sass.features}>
-            <a href="#open-source" class={sass.feature} style="--color: #6556D9;">Open<br/>source</a>
-            <a href="#free-to-play" class={sass.feature} style="--color: #2B68E3;">Free to play</a>
-            <a href="#game-engine" class={sass.feature} style="--color: #8A93A6;">Unity<br/>engine</a>
-            <a href="#open-source" class={`${sass.feature} ${sass.mobile}`} style="--color: #6556D9;">Open source</a>
-            <a href="#free-to-play" class={`${sass.feature} ${sass.mobile}`} style="--color: #2B68E3;">Free to play</a>
-            <a href="#game-engine" class={`${sass.feature} ${sass.mobile}`} style="--color: #8A93A6;">Unity engine</a>
-          </div>
-        </div>
-      </div>
-
       <div class={sass.content}>
-        <div class={sass.part} id="open-source">
-          <div class={sass.head}>
-            <a href="#open-source" style="--gradient-color: #6556D9;" class={sass.title}>Fully&nbsp;<i>Open Source</i></a>
-            <span class={sass.description}>All the code is available on GitHub</span>
-          </div>
-          <Link href={githubRepoUrl}>Let's see the code</Link>
-          <img id={sass["github-illustration"]} src={githubIllustration.src} alt="An octocat playing." />
-        </div>
+        <button onclick=`document.location.href = "${githubDownloadUrl}"`>
+          <span>Download</span>
 
-        <div class={sass.part} id="free-to-play">
-          <div class={sass.head}>
-            <a href="#free-to-play" style="--gradient-color: #2B68E3;" class={sass.title}><i>Free</i>&nbsp; to Play</a>
-            <span class={sass.description}>Being open source, Behide is entirely free to play and will remain so</span>
-          </div>
-        </div>
+          <svg class={sass.arrow} width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class={sass.chevron} d="M9.39287 4.46186L14.431 9.5L9.39287 14.5381" stroke="white" stroke-width="1.78127" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class={sass.line} d="M14.4311 9.5H3.51514" stroke="white" stroke-width="1.78125" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
 
-        <div class={sass.part} id="game-engine">
-          <div class={sass.head}>
-            <a href="#game-engine" style="--gradient-color: #8A93A6;" class={sass.title}>Made with&nbsp;<i>Unity</i></a>
-            <span class={sass.description}>This game is made with the popular Unity 3D game engine</span>
+        <div class={sass.cards}>
+          <div class={sass.card}>
+            <h1>Free to play</h1>
+            <p>Behide is entirely free to play and will remain so</p>
           </div>
-          <img id={sass["unity-logo"]} src={unityLogo.src} alt="The logo of Unity." />
-          <Link href={unityUrl}>Show me Unity</Link>
+          <div class={sass.card}>
+            <h1>Open source</h1>
+            <p>All the source code is available on GitHub</p>
+            <Link href={githubRepoUrl}>Go to the code</Link>
+          </div>
+          <div class={sass.card}>
+            <h1>Unity Engine</h1>
+            <p>This game is made with the popular Unity 3D game engine</p>
+          </div>
         </div>
       </div>
-    </div>
   </main>
 </Layout>
