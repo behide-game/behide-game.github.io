@@ -1,0 +1,18 @@
+.animated-arrow
+  transition: transform 200ms ease
+  scale: var(--animated-arrow-scale-force, var(--animated-arrow-scale))
+
+  .animated-arrow-line
+    transition: stroke-dashoffset 200ms ease
+    stroke-dasharray: 10
+    stroke-dashoffset: 10
+
+.animated-arrow-target:hover
+  .animated-arrow
+    transform: translateX(4px)
+    .animated-arrow-line
+      stroke-dashoffset: 20
+
+.animated-arrow-target:active
+  .animated-arrow
+    transform: translateX(6px)

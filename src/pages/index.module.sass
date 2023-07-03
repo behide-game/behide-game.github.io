@@ -1,7 +1,4 @@
 .home
-  background-image: url("../assets/gradients/gradient_2x.webp")
-  background-size: 100% 100%
-
   display: flex
   flex-direction: column
   align-items: center
@@ -33,7 +30,6 @@
   border-radius: 100px
 
   a
-    color: #ffffff
     font-size: 17px
   a:after
     all: unset
@@ -103,7 +99,7 @@
 
 // Call to action button
 button
-  padding: 18px 25px
+  padding: 18px 26px 18px 25px
   background: linear-gradient(117.54deg, #003078 0%, #003380 100%)
   border-radius: 100px
   border: none
@@ -119,41 +115,10 @@ button
   display: flex
   align-items: center
   justify-content: space-between
-  gap: 15px
+  gap: 11px
 
   span
-    margin-bottom: -3.4px
-
-  .arrow
-    scale: 1.4
-    width: 19px
-    height: 19px
-    transition: transform .15s
-
-    .chevron
-      position: absolute
-      transform: translateX(-4px)
-      transition: transform .15s
-
-    .line
-      display: block
-      width: 10.5px
-      height: 1.8px
-      border-radius: 10px
-
-      transform: scaleX(0)
-      transform-origin: center
-      transition: transform .15s
-
-button:hover
-  .arrow
-    .chevron
-      transform: translateX(0px)
-    .line
-      transform: scaleX(1)
-button:active
-  .arrow
-    transform: translateX(0.1em)
+    margin-bottom: -0.15em
 
 
 // Cards
@@ -198,13 +163,11 @@ button:active
     font-weight: 430
 
   a
-    color: white
     font-size: 20px
 
 
 @media (width <= 1000px)
   .home
-    background-image: url("../assets/gradients/gradient_1x.webp")
     gap: 90px
   .home > div:last-child
       margin-bottom: 3vh
@@ -224,12 +187,18 @@ button:active
 
 @media (width <= 750px)
   .banner
-    font-size: 20vw
+    font-size: 18vw
     .subtitle
       font-size: 6vw
 
   .content
     width: 100%
+
+  button
+    font-size: 18px
+    padding: 16px 22px
+    gap: 8px
+    --animated-arrow-scale-force: 1.3
 
   .cards
     width: 100%

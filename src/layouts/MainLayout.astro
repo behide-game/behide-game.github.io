@@ -30,7 +30,20 @@
 
     <title>Behide</title>
   </head>
-	<body>
-		<slot />
-	</body>
+  <body>
+    <style>
+      body {
+        background-image: url('/src/assets/gradients/gradient_2x.webp');
+        background-size: 100% 100%
+      }
+
+      @media (width <= 1000px) {
+        body {
+          background-image: url('/src/assets/gradients/gradient_1x.webp');
+        }
+      }
+    </style>
+
+    <slot />
+  </body>
 </html>
