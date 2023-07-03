@@ -1,53 +1,57 @@
 ---
+import "@/main.sass"
 import Layout from "../layouts/MainLayout.astro"
 import Link from "../components/Link.astro"
 import AnimatedText from "../components/AnimatedText"
 
 import behideLogo from "../assets/images/behide.svg"
-import sass from "./Home.module.sass"
-import "./index.sass"
+import sass from "./index.module.sass"
 
 const githubRepoUrl = "https://github.com/behide-game"
 const githubDownloadUrl = "https://github.com/behide-game/behide/releases"
 ---
 
 <Layout>
-  <main>
-    <div class={sass.home}>
-      <!-- Banner -->
-      <div class={sass.banner}>
-        <div class={sass.logo}>
-          <img src={behideLogo.src} alt="The Behide logo" />
-          <span class={sass.title}>Behide</span>
-        </div>
-        <AnimatedText client:load className={sass.subtitle}><>The new prop hunt</></AnimatedText>
+  <div id={sass["account-link"]}>
+    <Link href="/account">Account</Link>
+  </div>
+
+  <div class={sass.home}>
+
+    <!-- Banner -->
+    <div class={sass.banner}>
+      <div class={sass.logo}>
+        <img src={behideLogo.src} alt="The Behide logo" />
+        <span class={sass.title}>Behide</span>
       </div>
+      <AnimatedText client:load className={sass.subtitle}><>The new prop hunt</></AnimatedText>
+    </div>
 
-      <div class={sass.content}>
-        <button onclick=`document.location.href = "${githubDownloadUrl}"`>
-          <span>Download</span>
+    <!-- Content -->
+    <div class={sass.content}>
+      <button onclick=`document.location.href = "${githubDownloadUrl}"`>
+        <span>Download</span>
 
-          <svg class={sass.arrow} width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class={sass.chevron} d="M9.39287 4.46186L14.431 9.5L9.39287 14.5381" stroke="white" stroke-width="1.78127" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class={sass.line} d="M14.4311 9.5H3.51514" stroke="white" stroke-width="1.78125" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+        <svg class={sass.arrow} width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class={sass.chevron} d="M9.39287 4.46186L14.431 9.5L9.39287 14.5381" stroke="white" stroke-width="1.78127" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class={sass.line} d="M14.4311 9.5H3.51514" stroke="white" stroke-width="1.78125" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
-        <div class={sass.cards}>
-          <div class={sass.card}>
-            <h1>Free to play</h1>
-            <p>Behide is entirely free to play and will remain so</p>
-          </div>
-          <div class={sass.card}>
-            <h1>Open source</h1>
-            <p>All the source code is available on GitHub</p>
-            <Link href={githubRepoUrl}>Go to the code</Link>
-          </div>
-          <div class={sass.card}>
-            <h1>Unity Engine</h1>
-            <p>This game is made with the popular Unity 3D game engine</p>
-          </div>
+      <div class={sass.cards}>
+        <div class={sass.card}>
+          <h1>Free to play</h1>
+          <p>Behide is entirely free to play and will remain so</p>
+        </div>
+        <div class={sass.card}>
+          <h1>Open source</h1>
+          <p>All the source code is available on GitHub</p>
+          <Link href={githubRepoUrl}>Go to the code</Link>
+        </div>
+        <div class={sass.card}>
+          <h1>Unity Engine</h1>
+          <p>This game is made with the popular Unity 3D game engine</p>
         </div>
       </div>
-  </main>
+    </div>
 </Layout>

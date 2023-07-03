@@ -1,7 +1,7 @@
 {
   "name": "behide-website",
   "type": "module",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A website for Behide.",
   "repository": "git@github.com:behide-game/behide-game.github.io",
   "author": "Gaël Bouquain <gael.bouquain@gmail.com>",
@@ -26,6 +26,5 @@
     "postcss": "^8.4.21",
     "postcss-media-minmax": "^5.0.0",
     "sass": "^1.61.0"
-  },
-  "packageManager": "yarn@3.5.0"
+  }
 }

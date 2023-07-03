@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/MainLayout.astro"
+---
+
+<Layout>
+  <script is:inline>
+    const token = window.localStorage.getItem("token")
+    if (!token) {
+      document.location.href = "/account/login"
+    } else {
+      document.body.textContent = "Welcome"
+    }
+  </script>
+</Layout>

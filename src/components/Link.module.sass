@@ -32,7 +32,7 @@ a.link::after
   background-color: currentColor
   transform: scaleX(0)
   transform-origin: 0 0
-  transition: transform .3s ease
+  transition: transform 200ms ease
 a.link:hover::after
   transform: scaleX(1)
 
@@ -46,7 +46,7 @@ a.link:hover::after
     color: currentColor
     position: absolute
     transform: translateX(-4px)
-    transition: transform .3s
+    transition: transform 200ms
 
   .line
     display: block
@@ -57,7 +57,7 @@ a.link:hover::after
 
     transform: scaleX(0)
     transform-origin: center
-    transition: transform .3s
+    transition: transform 200ms
 
 a.link:hover
   .arrow

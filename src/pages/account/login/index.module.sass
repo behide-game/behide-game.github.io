@@ -1,0 +1,170 @@
+body
+  background-image: url("/src/assets/gradients/gradient_2x.webp")
+  background-size: 100% 100%
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+
+main
+  width: fit-content
+  height: fit-content
+
+  display: flex
+  padding: 45px
+  flex-direction: column
+  align-items: center
+  gap: 45px
+
+  background: linear-gradient(135deg, rgba(193, 214, 255, 0.08) 0%, rgba(0, 0, 0, 0.10) 100%)
+  backdrop-filter: blur(12.5px)
+
+  border-radius: 40px
+  border: 1px solid rgba(255, 255, 255, 0.18)
+
+#header
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 14px
+
+  #subtitle
+    color: #ffffff
+    text-align: center
+    font-size: 24px
+    font-family: "Mona Sans"
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    font-stretch: 125%
+    font-feature-settings: 'ss01'
+
+  #banner
+    font-size: 80px
+    height: 1em
+
+    display: flex
+    flex-direction: reverse
+    justify-content: center
+    filter: drop-shadow(0px 13px 15px rgba(0, 0, 0, 0.25))
+
+    .logo
+      height: 100%
+      z-index: 2
+
+    .title
+      // Title gradient
+      margin: 0px
+      background: linear-gradient(92.75deg, #9EDDFF 10.61%, #DDF3FF 70.22%)
+      background-clip: text
+      text-fill-color: transparent
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+
+      // Font
+      font-family: "Mona Sans"
+      font-size: 0.9em
+      font-style: normal
+      font-weight: 900
+      font-stretch: 125%
+      text-align: center
+      text-transform: uppercase
+      font-feature-settings: 'tnum' on, 'lnum' on
+
+      // Positioning
+      margin-left: -0.45em
+      z-index: 1
+
+#providers
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 18px
+  align-self: stretch
+
+  button
+    height: 65px
+    padding: 0px 25px
+
+    display: flex
+    justify-content: center
+    align-items: center
+    align-self: stretch
+    gap: 12px
+
+    border-radius: 60px
+    border: 1px solid #134289
+    background: #003380
+
+    cursor: pointer
+    transition: transform 60ms
+
+    span
+      flex: 1
+      color: #ffffff
+      font-size: 22px
+      font-family: "Mona Sans"
+      font-style: normal
+      font-weight: 400
+      line-height: normal
+
+    #discord, #google, #microsoft
+      width: 32px
+
+  button:active
+    transform: scale(0.98)
+
+#separator
+  width: 100px
+  height: 3px
+  border-radius: 3px
+  background-color: #ffffff
+
+#sign-up
+  color: #ffffff
+  text-align: center
+  font-size: 24px
+  font-family: Mona Sans
+  font-style: normal
+  font-weight: 600
+  line-height: normal
+  font-stretch: 125%
+  font-feature-settings: 'ss01'
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 10px
+
+  a
+    color: #ffffff
+
+
+@media (width <= 600px)
+  body
+    justify-content: flex-start
+
+  main
+    border: unset
+    background: unset
+    backdrop-filter: unset
+    margin-top: 8vh
+    gap: 50px
+
+  #header
+    gap: 10px
+    #banner
+      font-size: 70px
+    #subtitle
+      font-size: 24px
+
+  #providers
+    gap: 14px
+    button
+      border-width: 2px
+      span
+        font-size: 19px
+      #discord, #google, #microsoft
+        width: 30px

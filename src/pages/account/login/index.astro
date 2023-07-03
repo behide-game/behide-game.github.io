@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/MainLayout.astro"
+import Link from "@components/Link.astro"
+import behideLogo from "@assets/images/behide.svg"
+import discordLogo from "@assets/images/discord.svg"
+import googleLogo from "@assets/images/google.svg"
+import microsoftLogo from "@assets/images/microsoft.svg"
+
+import "@/main.sass"
+import sass from "./index.module.sass"
+---
+
+<Layout>
+  <main>
+    <div id={sass.header}>
+      <div id={sass.banner}>
+        <img class={sass.logo} src={behideLogo.src} alt="The Behide logo" />
+        <span class={sass.title}>Behide</span>
+      </div>
+
+      <span id={sass.subtitle}>Login to Behide</span>
+    </div>
+
+    <div id={sass.providers}>
+      <button type="button" onclick="redirectToProvider('discord');">
+        <img id={sass.discord} src={discordLogo.src} alt="Discord logo" />
+        <span>Continue with Discord</span>
+      </button>
+
+      <button type="button" onclick="redirectToProvider('google');">
+        <img id={sass.google} src={googleLogo.src} alt="Google logo" />
+        <span>Continue with Google</span>
+      </button>
+
+      <button type="button" onclick="redirectToProvider('microsoft');">
+        <img id={sass.microsoft} src={microsoftLogo.src} alt="Microsoft logo" />
+        <span>Continue with Microsoft</span>
+      </button>
+    </div>
+
+    <div id={sass.separator} />
+
+    <div id={sass["sign-up"]}>
+      <span>Don't have an account ?</span>
+      <Link href="/account/sign-up">Sign up</Link>
+    </div>
+
+    <script is:inline>
+      const redirectToProvider = provider => {
+        document.location.href =
+          `${import.meta.env.API_URL}/auth/login?provider=${provider}&redirect_uri=${document.location.origin + "/account/logged-in"}`
+      }
+    </script>
+  </main>
+</Layout>

@@ -1,5 +1,5 @@
 .home
-  background-image: url("/gradients/gradient_2x.webp")
+  background-image: url("../assets/gradients/gradient_2x.webp")
   background-size: 100% 100%
 
   display: flex
@@ -18,10 +18,25 @@
   *
     user-select: none
 
-.home > div:first-child
-    margin-top: 9vh
-.home > div:last-child
-    margin-bottom: 9vh
+.home > div:first-of-type
+  margin-top: 9vh
+.home > div:last-of-type
+  margin-bottom: 9vh
+
+#account-link
+  position: absolute
+  right: 15px
+  top: 15px
+
+  padding: 10px 15px
+  background-color: #003380
+  border-radius: 100px
+
+  a
+    color: #ffffff
+    font-size: 17px
+  a:after
+    all: unset
 
 
 @mixin title-gradient
@@ -104,21 +119,21 @@ button
   display: flex
   align-items: center
   justify-content: space-between
-  gap: 10px
+  gap: 15px
 
   span
-    margin-bottom: -2px
+    margin-bottom: -3.4px
 
   .arrow
-    scale: 1.2
+    scale: 1.4
     width: 19px
     height: 19px
-    transition: transform .2s
+    transition: transform .15s
 
     .chevron
       position: absolute
       transform: translateX(-4px)
-      transition: transform .3s
+      transition: transform .15s
 
     .line
       display: block
@@ -128,7 +143,7 @@ button
 
       transform: scaleX(0)
       transform-origin: center
-      transition: transform .3s
+      transition: transform .15s
 
 button:hover
   .arrow
@@ -189,7 +204,7 @@ button:active
 
 @media (width <= 1000px)
   .home
-    background-image: url("/gradients/gradient_1x.webp")
+    background-image: url("../assets/gradients/gradient_1x.webp")
     gap: 90px
   .home > div:last-child
       margin-bottom: 3vh
