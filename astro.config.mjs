@@ -11,7 +11,7 @@ export default defineConfig({
     solidJs(),
     sitemap(),
     robotsTxt(),
-    compress({ exclude: [path => path.substring(path.length - 4) === ".css"] })
+    compress({ exclude: [path => path.includes(".css") || path.includes(".webp")] })
   ],
   experimental: {
     assets: true
