@@ -1,0 +1,20 @@
+---
+import Layout from "@layouts/MainLayout.astro"
+import behideLogo from "@assets/images/behide.svg"
+import sass from "./CardLayout.module.sass"
+---
+
+<Layout>
+  <main>
+    <div id={sass.header}>
+      <div id={sass.banner}>
+        <img class={sass.logo} src={behideLogo.src} alt="The Behide logo" />
+        <span class={sass.title}>Behide</span>
+      </div>
+
+      <span id={sass.subtitle}>Log in to Behide</span>
+    </div>
+
+    <slot />
+  </main>
+</Layout>

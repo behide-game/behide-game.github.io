@@ -1,20 +1,24 @@
-import { onMount } from "solid-js"
+import { createSignal, onMount } from "solid-js"
 
 const getUrlParamError = () => {
   const searchParams = new URLSearchParams(document.location.search)
-  const error = searchParams.get("failed")
-
-  switch (error) {
-    case "user-not-found": return "user-not-found"
-    case null: return null
-    default: return "unknown"
-  }
+  return searchParams.get("error")
 }
 
 export default () => {
-  const error = getUrlParamError()
+  const [error, setError] = createSignal<string | null>()
 
   onMount(() => {
+    const error = getUrlParamError()
+
+    switch (error) {
+      case null: setError(null); break
+      case "404": setError("User not found, are you signed up ?"); return
+      case "400": setError("Failed to sign up."); return
+      case "500": setError("Failed to create a token."); return
+      default: setError("Unknown error: " + error); return
+    }
+
     const searchParams = new URLSearchParams(document.location.search)
     const token = searchParams.get("access_token")
     const refreshToken = searchParams.get("refresh_token")
@@ -23,13 +27,8 @@ export default () => {
 
     window.localStorage.setItem("token", token)
     window.localStorage.setItem("refreshToken", refreshToken)
+    document.location.href = "/account"
   })
 
-  switch (error) {
-    case "user-not-found": return <>User not found</>
-    case "unknown": return <>Unknown error</>
-    default: return (
-      <>Logged in</>
-    )
-  }
+  return <p style="color: white; font-family: 'Mona Sans'; margin: 0px">{error() ?? "Logged in"}</p>
 }
