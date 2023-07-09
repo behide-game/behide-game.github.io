@@ -2,6 +2,8 @@
 import Layout from "@layouts/MainLayout.astro"
 import behideLogo from "@assets/images/behide.svg"
 import sass from "./CardLayout.module.sass"
+
+const { title } = Astro.props
 ---
 
 <Layout>
@@ -12,7 +14,7 @@ import sass from "./CardLayout.module.sass"
         <span class={sass.title}>Behide</span>
       </div>
 
-      <span id={sass.subtitle}>Log in to Behide</span>
+      <span id={sass.subtitle}>{title}</span>
     </div>
 
     <slot />

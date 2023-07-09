@@ -1,34 +1,36 @@
-import { createSignal, onMount } from "solid-js"
+import { JSXElement, createSignal, onMount } from "solid-js"
 
-const getUrlParamError = () => {
-  const searchParams = new URLSearchParams(document.location.search)
-  return searchParams.get("error")
-}
-
-export default () => {
-  const [error, setError] = createSignal<string | null>()
+export default (props: { children?: JSXElement }) => {
+  const [error, setError] = createSignal<string | JSXElement | null>()
 
   onMount(() => {
-    const error = getUrlParamError()
-
-    switch (error) {
-      case null: setError(null); break
-      case "404": setError("User not found, are you signed up ?"); return
-      case "400": setError("Failed to sign up."); return
-      case "500": setError("Failed to create a token."); return
-      default: setError("Unknown error: " + error); return
-    }
-
     const searchParams = new URLSearchParams(document.location.search)
-    const token = searchParams.get("access_token")
+    const paramError = searchParams.get("error")
+    const accessToken = searchParams.get("access_token")
     const refreshToken = searchParams.get("refresh_token")
 
-    if (!token || !refreshToken) return
+    switch (paramError) {
+      case "404": setError(<>User not found, are you signed up ?{props.children}</>); break
+      case "400": setError("Failed to sign up."); break
+      case "500": setError("Failed to create a token."); break
+      case null: setError(null); break
+      default: setError("Unknown error: " + paramError); break
+    }
 
-    window.localStorage.setItem("token", token)
-    window.localStorage.setItem("refreshToken", refreshToken)
-    document.location.href = "/account"
+    if (accessToken && refreshToken && !paramError) {
+      window.localStorage.setItem("accessToken", accessToken)
+      window.localStorage.setItem("refreshToken", refreshToken)
+      document.location.href = "/account?signed-up=true"
+    } else if (!paramError) {
+      document.location.href = "/"
+    }
   })
 
-  return <p style="color: white; font-family: 'Mona Sans'; margin: 0px">{error() ?? "Logged in"}</p>
+  return (
+    <p>
+      {error()
+        ? error()
+        : "Logged in, redirecting..."}
+    </p>
+  )
 }

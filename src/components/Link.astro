@@ -5,12 +5,14 @@ import AnimatedArrow from "@components/AnimatedArrow.astro"
 interface Props {
   href: string,
   arrowScale?: number
+  class?: string
+  id?: string
 }
 
-const { href, arrowScale } = Astro.props
+const { href, arrowScale, class: className, id } = Astro.props
 ---
 
-<a href={href} class:list={[sass.link, "animated-arrow-target"]}>
+<a id={id} href={href} class:list={[sass.link, "animated-arrow-target", className]}>
   <slot />
   <AnimatedArrow scale={arrowScale || 1.3} />
 </a>

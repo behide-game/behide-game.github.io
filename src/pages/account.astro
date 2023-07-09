@@ -4,7 +4,7 @@ import Layout from "../layouts/MainLayout.astro"
 
 <Layout>
   <script is:inline>
-    const token = window.localStorage.getItem("token")
+    const token = window.localStorage.getItem("accessToken")
     if (!token) {
       document.location.href = "/account/log-in"
     } else {

@@ -1,9 +1,13 @@
 ---
 import Layout from "@layouts/CardLayout.astro"
+import Link from "@/components/Link.astro";
 import Page from "./logged-in"
+import "./logged-in-signed-up.sass"
 import "@/main.sass"
 ---
 
 <Layout>
-  <Page client:only />
+  <Page client:only>
+    <Link href="/account/sign-up">Sign up</Link>
+  </Page>
 </Layout>
