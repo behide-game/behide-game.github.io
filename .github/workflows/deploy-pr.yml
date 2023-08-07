@@ -1,0 +1,29 @@
+name: Netlify Preview Deploy
+
+on:
+  pull_request:
+    types: ['opened', 'edited', 'synchronize']
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: behide-internal
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install Netlify CLI
+        run: pnpm add -g netlify-cli
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy
+        run: netlify deploy --dir ./dist -s ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} -m ${{ github.ref_name }}
