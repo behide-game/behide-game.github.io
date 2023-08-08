@@ -17,7 +17,6 @@
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/solid-js": "^2.2.0",
     "astro": "^2.10.3",
-    "astro-compress": "^2.0.0",
     "astro-robots-txt": "^0.5.0",
     "solid-js": "^1.7.9"
   },
