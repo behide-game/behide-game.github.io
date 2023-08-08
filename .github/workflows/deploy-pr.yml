@@ -21,7 +21,7 @@ jobs:
         with:
           version: 8
           run_install: |
-            - args: [--frozen-lockfile]
+            - args: [--no-frozen-lockfile]
             - args: [--global netlify-cli]
 
       - name: Build

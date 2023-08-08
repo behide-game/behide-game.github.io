@@ -14,17 +14,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^1.2.2",
-    "@astrojs/solid-js": "^2.1.0",
-    "astro": "^2.2.0",
-    "astro-compress": "^1.1.35",
-    "astro-robots-txt": "^0.4.1",
-    "solid-js": "^1.4.3"
+    "@astrojs/sitemap": "^2.0.1",
+    "@astrojs/solid-js": "^2.2.0",
+    "astro": "^2.10.3",
+    "astro-compress": "^2.0.0",
+    "astro-robots-txt": "^0.5.0",
+    "solid-js": "^1.7.9"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.27",
     "postcss-media-minmax": "^5.0.0",
-    "sass": "^1.61.0"
+    "sass": "^1.64.2"
   }
 }
