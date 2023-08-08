@@ -9,6 +9,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: behide-internal
+    environment:
+      name: development
+      url: ${{ steps.netlify.outputs.NETLIFY_PROD_URL }}
 
     steps:
       - uses: actions/checkout@v3
@@ -71,13 +74,3 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      - name: Finish deployment
-        uses: bobheadxi/deployments@v1
-        if: always()
-        with:
-          env: ${{ steps.deployment.outputs.env }}
-          step: finish
-          status: ${{ job.status }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: ${{ steps.netlify.outputs.NETLIFY_PROD_URL }}

@@ -8,15 +8,12 @@ jobs:
   deploy:
     name: Deploy
     runs-on: behide-internal
+    environment:
+      name: development
+      url: ${{ steps.netlify.outputs.NETLIFY_DRAFT_URL }}
 
     steps:
       - uses: actions/checkout@v3
-      - name: Start deployment
-        uses: bobheadxi/deployments@v1
-        id: deployment
-        with:
-          env: preview
-          step: start
 
       # ------------ PNPM Setup ------------
       - name: Setup NodeJS
@@ -66,19 +63,7 @@ jobs:
             --site ${{ secrets.NETLIFY_SITE_ID }}
             --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
             --message "${{ github.event.pull_request.title }}"
-            --alias ${{ github.event.pull_request.id }}
+            --alias ${{ github.event.pull_request.number }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
-      - run: echo ${{ steps.netlify.outputs.NETLIFY_DRAFT_URL }}
-
-      - name: Finish deployment
-        uses: bobheadxi/deployments@v1
-        if: always()
-        with:
-          env: ${{ steps.deployment.outputs.env }}
-          step: finish
-          status: ${{ job.status }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: ${{ steps.netlify.outputs.NETLIFY_DRAFT_URL }}
