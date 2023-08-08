@@ -69,8 +69,9 @@ jobs:
             --dir ./dist
             --site ${{ secrets.NETLIFY_SITE_ID }}
             --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
-            --message "${{ github.event.head_commit.message }}"
+            --message "${{ github.event.head_commit.id }}"
             --alias ${{ github.event.head_commit.id }}
+            --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
