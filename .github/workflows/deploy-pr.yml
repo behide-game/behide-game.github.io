@@ -40,9 +40,12 @@ jobs:
           pnpm install --no-frozen-lockfile
           pnpm install --global netlify-cli
 
+      - name: Set environment variables
+        run: |
+          touch .env
+          echo "API_URL=${{ vars.API_URL }}" >> .env
+
       - name: Build
-        env:
-          API_URL: ${{ vars.API_URL }}
         run: pnpm build
 
       - name: Deploy
