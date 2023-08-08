@@ -71,6 +71,8 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
+      - run: echo ${{ steps.netlify.outputs.NETLIFY_DRAFT_URL }}
+
       - name: Finish deployment
         uses: bobheadxi/deployments@v1
         if: always()
