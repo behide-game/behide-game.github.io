@@ -12,13 +12,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Start deployment
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          env: production
+          step: start
 
-
-      - uses: actions/setup-node@v3
+      # ------------ PNPM Setup ------------
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - uses: pnpm/action-setup@v2
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
         with:
           version: 8
           run_install: false
@@ -27,9 +34,8 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -37,24 +43,41 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: |
-          pnpm install --no-frozen-lockfile
-          pnpm install --global netlify-cli
+        run: pnpm install --no-frozen-lockfile
+
+
+      # --------------- Build ---------------
 
       - name: Set environment variables
         run: |
           touch .env
           echo "API_URL=${{ vars.API_URL }}" >> .env
 
-      - name: Build
+      - name: Build Astro
         run: pnpm build
 
-      - name: Deploy
-        run: >
-          netlify deploy
-          --dir ./dist
-          --site ${{ secrets.NETLIFY_SITE_ID }}
-          --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          --message ${{ github.event.head_commit.message }}
-          --alias ${{ github.event.head_commit.message }}
-          --prod
+      - name: Deploy to Netlify
+        uses: South-Paw/action-netlify-cli@1.0.1
+        id: netlify
+        with:
+          args: >
+            deploy
+            --json
+            --dir ./dist
+            --site ${{ secrets.NETLIFY_SITE_ID }}
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            --message ${{ github.event.head_commit.message }}
+            --alias ${{ github.event.head_commit.id }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Finish deployment
+        uses: bobheadxi/deployments@v1
+        if: always()
+        with:
+          env: ${{ steps.deployment.outputs.env }}
+          step: finish
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          env_url: ${{ steps.netlify.outputs.NETLIFY_PROD_URL }}
