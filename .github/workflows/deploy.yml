@@ -1,0 +1,76 @@
+name: Netlify Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: behide-internal
+    environment:
+      name: development
+      url: ${{ steps.netlify.outputs.NETLIFY_PROD_URL }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start deployment
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          env: production
+          step: start
+
+      # ------------ PNPM Setup ------------
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+
+      # --------------- Build ---------------
+
+      - name: Set environment variables
+        run: |
+          touch .env
+          echo "API_URL=${{ vars.API_URL }}" >> .env
+
+      - name: Build Astro
+        run: pnpm build
+
+      - name: Deploy to Netlify
+        uses: South-Paw/action-netlify-cli@1.0.1
+        id: netlify
+        with:
+          args: >
+            deploy
+            --json
+            --dir ./dist
+            --site ${{ secrets.NETLIFY_SITE_ID }}
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            --message "${{ github.event.head_commit.message }}"
+            --alias ${{ github.event.head_commit.id }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
