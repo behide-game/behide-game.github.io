@@ -42,10 +42,12 @@ jobs:
           pnpm install --global netlify-cli
 
       - name: Build
+        env:
+          API_URL: ${{ vars.API_URL }}
         run: pnpm build
 
       - name: Deploy
-        run: |
+        run: >
           netlify deploy
           --dir ./dist
           --site ${{ secrets.NETLIFY_SITE_ID }}
