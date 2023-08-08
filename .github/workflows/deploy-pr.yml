@@ -12,18 +12,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-
-      - name: Install Netlify CLI
-        run: pnpm add -g netlify-cli
-
-      - name: Install deps
-        run: pnpm install
+          run_install: |
+            - args: [--frozen-lockfile]
+            - args: [--global netlify-cli]
 
       - name: Build
         run: pnpm build
 
       - name: Deploy
-        run: netlify deploy --dir ./dist -s ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} -m ${{ github.ref_name }}
+        run: |
+          netlify deploy
+          --dir ./dist
+          --site ${{ secrets.NETLIFY_SITE_ID }}
+          --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          --message ${{ github.event.pull_request.title }}
+          --alias ${{ github.event.pull_request.title }}
