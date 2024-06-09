@@ -1,52 +1,28 @@
 ---
+import Layout from "@layouts/MainLayoutWithoutBackground.astro"
+
 import "@/main.sass"
-import Layout from "@layouts/MainLayout.astro"
-import Link from "@components/Link.astro"
-import AnimatedText from "@components/AnimatedText"
-import AnimatedArrow from "@/components/AnimatedArrow.astro"
-
-import behideLogo from "@assets/images/behide.svg"
 import sass from "./index.module.sass"
-
-const githubRepoUrl = "https://github.com/behide-game"
-const githubDownloadUrl = "https://github.com/behide-game/behide/releases"
+import sassBackground from "./index-background.module.scss"
+import behideLogo from "@assets/images/behide-logo-shadowed.svg"
 ---
 
 <Layout>
-  <Link id={sass["account-link"]} href="/account" arrowScale={1}>Account</Link>
+	<div id={sassBackground.background}>
+		<img
+			id={sassBackground["background-image"]}
+			src={behideLogo.src}
+			alt="The Behide's logo."
+		/>
 
-  <div class={sass.home}>
+		<div id={sassBackground["ball-container"]}>
+			<div id={sassBackground.ball}></div>
+		</div>
+		</div>
+	</div>
 
-    <!-- Banner -->
-    <div class={sass.banner}>
-      <div class={sass.logo}>
-        <img src={behideLogo.src} alt="The Behide logo" />
-        <span class={sass.title}>Behide</span>
-      </div>
-      <AnimatedText client:load className={sass.subtitle}><>The new prop hunt</></AnimatedText>
-    </div>
-
-    <!-- Content -->
-    <div class={sass.content}>
-      <button class="animated-arrow-target" onclick=`document.location.href = "${githubDownloadUrl}"`>
-        <span>Download</span>
-        <AnimatedArrow scale={1.5} />
-      </button>
-
-      <div class={sass.cards}>
-        <div class={sass.card}>
-          <h1>Free to play</h1>
-          <p>Behide is entirely free to play and will remain so</p>
-        </div>
-        <div class={sass.card}>
-          <h1>Open source</h1>
-          <p>All the source code is available on GitHub</p>
-          <Link href={githubRepoUrl}>Go to the code</Link>
-        </div>
-        <div class={sass.card}>
-          <h1>Unity Engine</h1>
-          <p>This game is made with the popular Unity 3D game engine</p>
-        </div>
-      </div>
-    </div>
+	<div id={sass.headline}>
+		<h1>Behide</h1>
+		<span>The new prop hunt</span>
+	</div>
 </Layout>

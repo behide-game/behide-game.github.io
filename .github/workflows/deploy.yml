@@ -10,7 +10,7 @@ jobs:
     name: Deploy
     runs-on: behide-internal
     environment:
-      name: development
+      name: production
       url: ${{ steps.netlify.outputs.NETLIFY_PROD_URL }}
 
     steps:

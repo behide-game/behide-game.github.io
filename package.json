@@ -14,16 +14,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^2.0.1",
-    "@astrojs/solid-js": "^2.2.0",
-    "astro": "^2.10.3",
-    "astro-robots-txt": "^0.5.0",
-    "solid-js": "^1.7.9"
+    "@astrojs/sitemap": "^3.1.5",
+    "@astrojs/solid-js": "^3.0.3",
+    "astro": "^4.10.1",
+    "astro-robots-txt": "^1.0.0",
+    "solid-js": "^1.8.17"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.27",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
     "postcss-media-minmax": "^5.0.0",
-    "sass": "^1.64.2"
+    "sass": "^1.77.4"
   }
 }

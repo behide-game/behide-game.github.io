@@ -1,2 +1,3 @@
-/// <reference types="astro/client-image" />
+/// <reference types="astro/client" />
 declare module "*.module.sass"
+declare module "*.module.scss"
